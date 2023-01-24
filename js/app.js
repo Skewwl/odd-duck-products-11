@@ -86,10 +86,10 @@ function handleClick(clickEvent) {
 };
 
 //submit event handler
-// function handleSubmit(submitEvent) {
-//     submitEvent.preventDefault();
-//     submitEvent.console.log('hello');
-// }
+function handleSubmit(submitEvent) {
+    submitEvent.preventDefault();
+    // submitEvent.console.log('hello');
+}
 
 imgSectionEl.addEventListener('click', handleClick);
 buttonEl.addEventListener('submit', handleSubmit);
