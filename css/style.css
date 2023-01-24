@@ -1,0 +1,37 @@
+
+body{
+    margin: 5%;
+    font-family: 'Roboto', Verdana, sans-serif;
+}
+
+header{
+    margin-bottom: 20px;
+}
+
+h1{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+section{
+    width: 100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 200px;
+}
+
+#image1{
+   width: 300px;
+    
+  }
+  
+#image2{
+    width: 300px;
+    
+    
+  } 
+  
+#image3{
+    width: 300px;
+    
+  }
