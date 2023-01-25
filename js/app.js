@@ -102,7 +102,7 @@ function handleSubmit(event2) {
     buttonEl.removeEventListener('click', handleSubmit);
     console.log(clickedData, shownData, nameData);
 
-    canvasEl.hidden = false;
+    canvasEl.hidden = (false);
     //Data visualization w ChartJS
     new Chart(ctx, {
         type: 'bar',
