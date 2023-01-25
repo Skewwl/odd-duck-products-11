@@ -69,6 +69,8 @@ function renderImages() {
     img1El.name = img1.name;
     img2El.name = img2.name;
     img3El.name = img3.name;
+    //remove images from array so they don't appear next round
+    
     //only 25 rounds of images
     selectionRounds++;
     if (selectionRounds >= 26) {
