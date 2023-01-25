@@ -1,6 +1,8 @@
 'use strict';
 
 //variables
+const canvasEl = document.getElementById('chart');
+const ctx = canvasEl.getContext('2d');
 const divButtonEl = document.getElementById('divbutton');
 const pleaseEl = document.getElementById('please');
 const buttonEl = document.getElementById('viewresults');
@@ -75,8 +77,8 @@ function renderImages() {
 }
 
 //click event handler
-function handleClick(clickEvent) {
-    let imageName = clickEvent.target.name;
+function handleClick(event1) {
+    let imageName = event1.target.name;
     constructedImages.forEach(function (searchArrayFor) {
         if (searchArrayFor.name === imageName) {
             searchArrayFor.timesClicked++;
@@ -86,12 +88,46 @@ function handleClick(clickEvent) {
 };
 
 //submit event handler
-function handleSubmit(submitEvent) {
-    submitEvent.preventDefault();
-    // submitEvent.console.log('hello');
-}
+function handleSubmit(event2) {
+    let clickedData = [];
+    let shownData = [];
+    let nameData = [];
+    for (let i = 0; i < constructedImages.length; i++) {
+        nameData.push(constructedImages[i].name)
+        clickedData.push(constructedImages[i].timesClicked);
+        shownData.push(constructedImages[i].timesShown);
+    }
+    buttonEl.removeEventListener('click', handleSubmit);
+    console.log(clickedData, shownData, nameData);
+
+    canvasEl.hidden = false;
+    //Data visualization w ChartJS
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: nameData,
+            datasets: [{
+                label: '# of clicks',
+                data: clickedData,
+                borderWidth: 1
+            }, {
+                label: '# of times shown',
+                data: shownData,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+};
 
 imgSectionEl.addEventListener('click', handleClick);
-buttonEl.addEventListener('submit', handleSubmit);
+buttonEl.addEventListener('click', handleSubmit);
 
 renderImages();
